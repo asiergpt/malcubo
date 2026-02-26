@@ -188,7 +188,7 @@ def show_home():
                 st.rerun()
                 
         with b2:
-            if st.button("Explorar Profesionales", key="btn_home_personas", use_container_width=True):
+            if st.button("Explorar Personas", key="btn_home_personas", use_container_width=True):
                 st.session_state.page = 'personas'
                 st.session_state.scroll_needed = True
                 st.rerun()
@@ -201,4 +201,5 @@ def show_home():
     <div class="note-section" style="margin-top: 20px;">
         <p><strong>📌 Nota metodológica:</strong> Los datos provienen de inteligencia artificial e información pública (prensa, rankings, webs corporativas). Aunque procuro máxima precisión, algunos datos pueden estar sujetos a cambios o ser inexactos.</p>
     </div>
+
     """, unsafe_allow_html=True)
