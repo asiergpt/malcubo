@@ -428,6 +428,34 @@ def show_home():
             <div class="hero-title">M al cubo</div>
             <div class="hero-divider"></div>
             <p class="hero-subtitle">Un producto estratégico para penetrar el mercado ejecutivo vasco. Conoce el tejido, mapea las conexiones y activa tu red.</p>
+            <a href="https://asierdorronsoro.streamlit.app/" target="_blank" style="
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                margin-top: 20px;
+                font-family: 'Manrope', sans-serif;
+                font-size: 0.65rem;
+                font-weight: 600;
+                letter-spacing: 2.5px;
+                text-transform: uppercase;
+                color: rgba(255,204,102,0.65) !important;
+                -webkit-text-fill-color: rgba(255,204,102,0.65);
+                border: 1px solid rgba(255,204,102,0.25);
+                border-radius: 8px;
+                padding: 8px 16px;
+                text-decoration: none !important;
+                transition: all 0.25s ease;
+                background: transparent;
+            "
+            onmouseover="this.style.borderColor='rgba(255,204,102,0.7)';this.style.background='rgba(255,204,102,0.07)';this.style.webkitTextFillColor='#ffcc66';"
+            onmouseout="this.style.borderColor='rgba(255,204,102,0.25)';this.style.background='transparent';this.style.webkitTextFillColor='rgba(255,204,102,0.65)';"
+            >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          stroke="#ffcc66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Inicio
+            </a>
         </div>
         <div class="hero-image-wrap">
             {img_tag}
