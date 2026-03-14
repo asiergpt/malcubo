@@ -489,16 +489,48 @@ def show_home():
                 <div class="market-card-desc">El mercado de posiciones críticas previo a su publicación, accesible solo por referencias y reputación.</div>
             </div>
         </div>
+        <div style="display:flex; gap:0;">
+            <a href="?goto=explorer" style="
+                flex:1; padding:15px 10px; text-align:center;
+                background:#0d0d0d; color:#ffcc66 !important;
+                -webkit-text-fill-color:#ffcc66;
+                border:1px solid rgba(255,204,102,0.2);
+                border-top:none; border-right:1px solid rgba(255,204,102,0.12);
+                border-radius:0 0 0 18px;
+                font-family:'Quicksand',sans-serif; font-weight:700;
+                font-size:0.68rem; letter-spacing:3px; text-transform:uppercase;
+                text-decoration:none !important; display:block;
+                transition:all 0.3s ease;
+            "
+            onmouseover="this.style.background='#ffcc66';this.style.webkitTextFillColor='#0d0d0d';"
+            onmouseout="this.style.background='#0d0d0d';this.style.webkitTextFillColor='#ffcc66';"
+            >Empresas</a>
+            <a href="?goto=personas" style="
+                flex:1; padding:15px 10px; text-align:center;
+                background:#0d0d0d; color:#ffcc66 !important;
+                -webkit-text-fill-color:#ffcc66;
+                border:1px solid rgba(255,204,102,0.2);
+                border-top:none; border-left:none;
+                border-radius:0 0 18px 0;
+                font-family:'Quicksand',sans-serif; font-weight:700;
+                font-size:0.68rem; letter-spacing:3px; text-transform:uppercase;
+                text-decoration:none !important; display:block;
+                transition:all 0.3s ease;
+            "
+            onmouseover="this.style.background='#ffcc66';this.style.webkitTextFillColor='#0d0d0d';"
+            onmouseout="this.style.background='#0d0d0d';this.style.webkitTextFillColor='#ffcc66';"
+            >Personas</a>
+        </div>
         """, unsafe_allow_html=True)
-        b1, b2 = st.columns(2)
-        with b1:
-            if st.button("Empresas", key="btn_emp", use_container_width=True):
-                st.session_state.page = 'explorer'
-                st.rerun()
-        with b2:
-            if st.button("Personas", key="btn_pers", use_container_width=True):
-                st.session_state.page = 'personas'
-                st.rerun()
+        # Capturar navegación
+        if st.query_params.get("goto") == "explorer":
+            st.query_params.clear()
+            st.session_state.page = 'explorer'
+            st.rerun()
+        if st.query_params.get("goto") == "personas":
+            st.query_params.clear()
+            st.session_state.page = 'personas'
+            st.rerun()
 
     # =========================================
     # 4. NOTA METODOLÓGICA
