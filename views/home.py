@@ -293,6 +293,19 @@ def show_home():
         display: block !important;
     }
 
+    /* Anular estilos de enlace en botones HTML de Empresas/Personas */
+    a[href*="goto"] {
+        text-decoration: none !important;
+        outline: none !important;
+        -webkit-text-fill-color: #ffcc66 !important;
+    }
+    a[href*="goto"]:visited,
+    a[href*="goto"]:link,
+    a[href*="goto"]:focus {
+        text-decoration: none !important;
+        -webkit-text-fill-color: #ffcc66 !important;
+    }
+
     div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] div[data-testid="stButton"] > button {
         width: 100% !important;
         background-color: #0d0d0d !important;
@@ -376,6 +389,25 @@ def show_home():
         .hero-image-wrap { width: 55%; }
         .hero-subtitle { max-width: 100%; }
         .hero-divider { margin-left: auto; margin-right: auto; }
+
+        /* Las 3 tarjetas se apilan en móvil */
+        div[data-testid="stHorizontalBlock"] {
+            flex-direction: column !important;
+        }
+        div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] {
+            width: 100% !important; min-width: 100% !important;
+        }
+
+        /* EXCEPCIÓN: los dos botones Empresas/Personas se mantienen en fila */
+        div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:last-child
+        div[data-testid="stHorizontalBlock"] {
+            flex-direction: row !important;
+            gap: 0 !important;
+        }
+        div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:last-child
+        div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] {
+            width: 50% !important; min-width: 50% !important; flex: 1 1 50% !important;
+        }
     }
     </style>
     """, unsafe_allow_html=True)
@@ -489,48 +521,16 @@ def show_home():
                 <div class="market-card-desc">El mercado de posiciones críticas previo a su publicación, accesible solo por referencias y reputación.</div>
             </div>
         </div>
-        <div style="display:flex; gap:0;">
-            <a href="?goto=explorer" style="
-                flex:1; padding:15px 10px; text-align:center;
-                background:#0d0d0d; color:#ffcc66 !important;
-                -webkit-text-fill-color:#ffcc66;
-                border:1px solid rgba(255,204,102,0.2);
-                border-top:none; border-right:1px solid rgba(255,204,102,0.12);
-                border-radius:0 0 0 18px;
-                font-family:'Quicksand',sans-serif; font-weight:700;
-                font-size:0.68rem; letter-spacing:3px; text-transform:uppercase;
-                text-decoration:none !important; display:block;
-                transition:all 0.3s ease;
-            "
-            onmouseover="this.style.background='#ffcc66';this.style.webkitTextFillColor='#0d0d0d';"
-            onmouseout="this.style.background='#0d0d0d';this.style.webkitTextFillColor='#ffcc66';"
-            >Empresas</a>
-            <a href="?goto=personas" style="
-                flex:1; padding:15px 10px; text-align:center;
-                background:#0d0d0d; color:#ffcc66 !important;
-                -webkit-text-fill-color:#ffcc66;
-                border:1px solid rgba(255,204,102,0.2);
-                border-top:none; border-left:none;
-                border-radius:0 0 18px 0;
-                font-family:'Quicksand',sans-serif; font-weight:700;
-                font-size:0.68rem; letter-spacing:3px; text-transform:uppercase;
-                text-decoration:none !important; display:block;
-                transition:all 0.3s ease;
-            "
-            onmouseover="this.style.background='#ffcc66';this.style.webkitTextFillColor='#0d0d0d';"
-            onmouseout="this.style.background='#0d0d0d';this.style.webkitTextFillColor='#ffcc66';"
-            >Personas</a>
-        </div>
         """, unsafe_allow_html=True)
-        # Capturar navegación
-        if st.query_params.get("goto") == "explorer":
-            st.query_params.clear()
-            st.session_state.page = 'explorer'
-            st.rerun()
-        if st.query_params.get("goto") == "personas":
-            st.query_params.clear()
-            st.session_state.page = 'personas'
-            st.rerun()
+        b1, b2 = st.columns(2)
+        with b1:
+            if st.button("Empresas", key="btn_emp", use_container_width=True):
+                st.session_state.page = 'explorer'
+                st.rerun()
+        with b2:
+            if st.button("Personas", key="btn_pers", use_container_width=True):
+                st.session_state.page = 'personas'
+                st.rerun()
 
     # =========================================
     # 4. NOTA METODOLÓGICA
