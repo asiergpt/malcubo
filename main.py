@@ -36,7 +36,7 @@ if 'current_page_personas' not in st.session_state: st.session_state.current_pag
 
 st.set_page_config(
     page_title="M al cubo",
-    page_icon="",
+    page_icon="🌐",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
