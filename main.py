@@ -35,7 +35,7 @@ if 'f_personas_funcion' not in st.session_state: st.session_state.f_personas_fun
 if 'current_page_personas' not in st.session_state: st.session_state.current_page_personas = 0
 
 st.set_page_config(
-    page_title="M al cubo",
+    page_title="M al cubo | Asier Dorronsoro",
     page_icon="🌐",
     layout="centered",
     initial_sidebar_state="collapsed"
