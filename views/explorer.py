@@ -196,6 +196,27 @@ def show_explorer(df_main, df_alumni, empresas_alumni_set):
         border-color: rgba(255,204,102,0.55) !important;
         background: rgba(255,204,102,0.04) !important; color: #111111 !important;
     }
+
+@media (max-width: 640px) {
+    .metric-row {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .metric-card {
+        flex: 1 1 calc(50% - 4px);
+        min-width: calc(50% - 4px);
+        padding: 10px 12px;
+        min-height: 68px;
+    }
+    .metric-label {
+        font-size: 0.52rem;
+        letter-spacing: 1.5px;
+        margin-bottom: 6px;
+    }
+    .metric-value {
+        font-size: 0.95rem;
+    }
+}
     </style>
     """, unsafe_allow_html=True)
 
