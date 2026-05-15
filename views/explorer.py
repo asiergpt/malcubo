@@ -94,6 +94,83 @@ def show_explorer(df_main, df_alumni, empresas_alumni_set):
         text-decoration: none !important;
     }
 
+    /* Banner versión mejorada Gipuzkoa */
+    .upgrade-banner {
+        position: relative;
+        background: linear-gradient(135deg, #fffaf0 0%, #fff5e0 100%);
+        border: 1px solid rgba(255,204,102,0.45);
+        border-radius: 14px;
+        padding: 18px 22px;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        box-shadow: 0 2px 12px rgba(255,204,102,0.08);
+    }
+    .upgrade-banner::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 4px;
+        background: linear-gradient(180deg, #ffcc66 0%, #f0a830 100%);
+        border-radius: 14px 0 0 14px;
+    }
+    .upgrade-banner-badge {
+        font-family: 'Manrope', sans-serif;
+        font-size: 0.58rem; font-weight: 700;
+        letter-spacing: 2px; text-transform: uppercase;
+        color: #b8860b;
+        background: rgba(255,204,102,0.18);
+        border: 1px solid rgba(255,204,102,0.4);
+        padding: 4px 10px; border-radius: 6px;
+        display: inline-block;
+        margin-bottom: 6px;
+    }
+    .upgrade-banner-text { flex: 1 1 280px; min-width: 240px; }
+    .upgrade-banner-title {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 1.05rem; font-weight: 700;
+        color: #1a1a1a; line-height: 1.3;
+        margin-bottom: 4px;
+    }
+    .upgrade-banner-sub {
+        font-family: 'Manrope', sans-serif;
+        font-size: 0.82rem; font-weight: 400;
+        color: #555; line-height: 1.5;
+    }
+    .upgrade-banner-sub b { color: #1a1a1a; font-weight: 600; }
+    .upgrade-banner-cta {
+        font-family: 'Manrope', sans-serif;
+        font-size: 0.78rem; font-weight: 600;
+        letter-spacing: 0.5px;
+        color: #0d0d0d !important;
+        -webkit-text-fill-color: #0d0d0d;
+        background: linear-gradient(135deg, #ffcc66 0%, #ffb84d 100%);
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 8px;
+        padding: 10px 18px;
+        text-decoration: none !important;
+        display: inline-flex; align-items: center; gap: 6px;
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+        white-space: nowrap;
+    }
+    .upgrade-banner-cta:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 18px rgba(255,184,77,0.35);
+        color: #0d0d0d !important;
+    }
+    .upgrade-banner-cta:visited, .upgrade-banner-cta:link {
+        color: #0d0d0d !important;
+        -webkit-text-fill-color: #0d0d0d;
+    }
+    @media (max-width: 640px) {
+        .upgrade-banner { padding: 16px 18px; gap: 12px; }
+        .upgrade-banner-title { font-size: 0.95rem; }
+        .upgrade-banner-sub { font-size: 0.76rem; }
+        .upgrade-banner-cta { width: 100%; justify-content: center; }
+    }
+
     /* Filtros */
     .filter-section {
         background: #f8f8f8; border-radius: 14px;
@@ -229,6 +306,23 @@ def show_explorer(df_main, df_alumni, empresas_alumni_set):
             <div class="exp-hero-sub">Filtra y encuentra tu empresa objetivo en el ecosistema vasco.</div>
         </div>
         <a class="exp-back-btn" href="?nav=home">← Inicio</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # BANNER VERSIÓN MEJORADA GIPUZKOA
+    st.markdown("""
+    <div class="upgrade-banner">
+        <div class="upgrade-banner-text">
+            <span class="upgrade-banner-badge">⭐ Nueva versión · Gipuzkoa</span>
+            <div class="upgrade-banner-title">Explorador avanzado de empresas de Gipuzkoa</div>
+            <div class="upgrade-banner-sub">
+                He desarrollado una versión mejorada con más datos, mejor experiencia y análisis más profundo para <b>Gipuzkoa</b>.
+                El objetivo es llevarla al mismo nivel para <b>Bizkaia</b>, <b>Álava</b> y <b>Navarra</b>.
+            </div>
+        </div>
+        <a class="upgrade-banner-cta" href="https://asierdorronsoro.vercel.app/explorar" target="_blank" rel="noopener">
+            Probar versión Gipuzkoa →
+        </a>
     </div>
     """, unsafe_allow_html=True)
 
